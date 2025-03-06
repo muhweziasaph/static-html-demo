@@ -126,14 +126,14 @@ Steps i used to produce the one in this assignment
      </body>
      </html>
      
-	I create a dockerfile to serve the HTML file using Nginx.
-# Use an official Nginx image as the base image
+	I created a dockerfile to serve the HTML file using Nginx.
+# i Used an official Nginx image as the base image
      FROM nginx:alpine
-# Copy the static HTML file to the Nginx web root directory
+# i Copied the static HTML file to the Nginx web root directory
      COPY index.html /usr/share/nginx/html/index.html
-# Expose port 80
+# i exposed port 80
      EXPOSE 80
-# Start Nginx
+# i started Nginx
      CMD ["nginx", "-g", "daemon off;"]
      
 •	Building and running the docker container locally
