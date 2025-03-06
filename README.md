@@ -1,8 +1,13 @@
 # static-html-demo
+
 operating system containerization assignment 
+
 TASK 1 ASSIGNMENT SOLUTION, EXPLAINING THE CONCEPT OF CONTAINERISATION
+
 QN1 Explain the concept of containerization.
-(a)What are the key use cases of containerization? 
+
+(a)What are the key use cases of containerization?
+
 (b)Explore different containerization technologies such as Docker, Podman, and Kubernetes. 
 (c)how do they differ from Virtual Machines? 
 (d)Create a Docker container for a simple web application (e.g., a Python Flask app or a static HTML server).
