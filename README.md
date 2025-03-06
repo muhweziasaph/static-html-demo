@@ -9,40 +9,71 @@ QN1 Explain the concept of containerization.
 (a)What are the key use cases of containerization?
 
 (b)Explore different containerization technologies such as Docker, Podman, and Kubernetes. 
+
 (c)how do they differ from Virtual Machines? 
+
 (d)Create a Docker container for a simple web application (e.g., a Python Flask app or a static HTML server).
+
 (e)Install Git and Create GitHub repository to work on this task.
+
 (f)Walk through the process of containerizing a basic web application using Docker.
+
 (g)Show the role of Kubernetes in container orchestration. 
+
 (h)Share the GitHub Repository Link. The repository should include: The Dockerfile, Application source code, README.md
+
 
 Containerization is a lightweight form of virtualization that allows applications to be packaged with all their dependencies into a standardized unit called a container. This ensures that applications run consistently across different computing environments.
 Unlike virtual machines (VMs), which include an entire OS, containers share the host OS kernel, making them more efficient, faster, and lightweight.
 
+
 (a) Key use cases of containerization
+
 •	Microservices architecture. Containers are enable breaking down applications into smaller, independently deployable services.
+
 •	Continuous integration/continuous deployment pipelines. Containers are used in continuous integration/continuous deployment workflows for faster application development and deployment.
+
 •	Cloud computing. Containers are used to improve scalability and portability in cloud environments like AWS, Google Cloud, and Azure.
+
 •	DevOps (development operations) and development environments. Developers create consistent environments across development, testing, and production using containerization.
+
 •	Hybrid and multi cloud deployments Containers are used to deployed applications seamlessly across multiple cloud providers.
+
 (b) Different containerization technologies
+
 •	Docker. It is a platform that enables developers to automate the deployment of applications inside lightweight containers. It provides tools and resources to create, deploy, and run applications using containerization.
+
 	Key features
+
 	Simplifies application deployment.
+
 	Offers docker hub, a repository for sharing container images.
+
 	Supports multi-stage builds for optimized images.
+
 •	Podman. It is a daemon less container engine that allows users to run containers as regular processes without requiring a background service.
+
 	Key features
+
 	Rootless mode enhances security by allowing unprivileged users to run containers.
+
 	Compatible with docker CLI, making it easier for users to transition.
+
 	Supports Kubernetes YAML, facilitating orchestration.
+
 •	Kubernetes. It’s often abbreviated as K8s and it is a container orchestration platform designed for automating the deployment, scaling, and management of containerized applications.
+
 Key features
+
 •	Provides self-healing by automatically restarting failed containers.
+
 •	Facilitates load balancing and service discovery.
+
 •	Manages storage orchestration and automated rollouts/rollbacks.
 
+
 How containers differ from virtual machines (VMs)
+
 features	containers	Virtual machines
 Operating system overhead	Share host kernel	Have full operating system for each instance
 performance	Faster and lightweight	Heavier due to full operating system
