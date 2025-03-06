@@ -72,25 +72,48 @@ Key features
 •	Manages storage orchestration and automated rollouts/rollbacks.
 
 
-How containers differ from virtual machines (VMs)
 
-features	containers	Virtual machines
-Operating system overhead	Share host kernel	Have full operating system for each instance
-performance	Faster and lightweight	Heavier due to full operating system
-isolation	Process level isolation	Full machine level isolation
-Start up time 	In seconds	Take minutes to boot
-portability	Highly portable across systems	Require specific configuration
+(c)How containers differ from virtual machines (VMs)
+
+Containerization uses compute resources more efficiently. A container creates a single executable package of software that bundles application code together with all of its dependencies required for it to run. Unlike virtual machines, however, containers do not bundle in a copy of the operating system. Instead, the container runtime engine is installed on the host system’s operating system, becoming the conduit through which all containers on the computing system share the same OS. They are often called “lightweight” simply because they share the machine’s operating system kernel and do not require the overhead of associating an OS within each application as in case of virtual machine. Other container layers (common bins and libraries) can also be shared among multiple containers, making containers inherently smaller in capacity than a virtual machine and faster to start up. Multiple containers can run on the same compute capacity as a single virtual machine, driving even higher server efficiencies and reducing server and licensing costs.
+
+Whereas
+
+Virtualization utilizes a hypervisor, a software layer placed on a physical computer or server that allows the physical computer to separate its operating system and applications from its hardware. Virtualization technology allows multiple operating systems and software applications to run simultaneously and share a single physical computer or host machine’s resources such as CPU (central processing unit), storage and memory. for example, with virtualization,  one server can run both windows and Linux or multiple versions of an operating system, along with various applications Each application and its related file system, libraries and other dependencies including a copy of the operating system are packaged together as a virtual machine.
+
+ In summary.
+ 
+•	Containers share host kernel of the operating system overhead whereas virtual machines require full operating system for each instance
+
+•	Containers are faster and lightweight in performance where as virtual machines are heavier due to full operating system.
+
+•	Containers isolation is at process level where as virtual machines is at full machine level
+
+•	Containers start up time is in seconds whereas virtual machines take minutes to boot
+
+•	Containers are highly portable across systems whereas virtual machines require specific configuration
+
 
 (d) Docker file attached
+
 (e) you’re on the created repository
+
 (f) Containerizing a Basic Web Application Using Docker
+
     (f) I will use the approach i used to containerize a static HTML server using docker and deploy it on Google Kubernetes Engine (GKE) but almost procedures are the same even using other approaches. its all about creating a project directory then an application file for example HTML file, then docker file using Nginx to serve created HTML file, copying the HTML file to the Nginx server directory and exposing port 80, building docker image, and then running docker container. Below are the steps i personally used.
+    
 Steps i used to produce the one in this assignment
+
 •	Setting up Goggle cloud project
+
 	I created a project and enabled billing.
+
 	I installed the Google Cloud SDK and authenticated it with the created project
+
 •	Creating a static HTML Application.
+
 	I created an index.html file.
+
 <!DOCTYPE html>
      <html lang="en">
      <head>
@@ -103,7 +126,9 @@ Steps i used to produce the one in this assignment
          <p>This is a static HTML page hosted on google cloud using Docker container and kubernetes.</p>
      </body>
      </html>
+     
 	I create a dockerfile to serve the HTML file using Nginx.
+
 # Use an official Nginx image as the base image
      FROM nginx:alpine
 
@@ -115,35 +140,56 @@ Steps i used to produce the one in this assignment
 
      # Start Nginx
      CMD ["nginx", "-g", "daemon off;"]
+     
 •	Building and running the docker container locally
+
 	I build the docker image:
+
           bash
           docker build -t static-html-server.
+          
 	I ran the container:
+
           bash
           docker run -p 8080:80 static-html-server
+          
 •	Pushing the docker image to Google container registry.
+
 	I tagged and pushed the image:
+
           bash
           docker tag static-html-server gcr.io/<PROJECT_ID>/static-html-server:latest
           docker push gcr.io/<PROJECT_ID>/static-html-server:latest
+          
 •	Deploying the application on Kubernetes.
+
 	I created a Goggle Kubernetes engine cluster:
+
           bash
           gcloud container clusters create static-html-cluster --num-nodes=3
           
+          
 	I deployed the application:
+
           bash
           kubectl create deployment static-html-app --image=gcr.io/<PROJECT_ID>/static-html-server:latest
           kubectl expose deployment static-html-app --type=LoadBalancer --port=80 --target-port=80
           
+          
 	I accessed the app at the external IP provided by Goggle Kubernetes engine
 
+
 (g) The Role of Kubernetes in Container orchestration
+
 Kubernetes is a powerful orchestration system for automating the deployment, scaling, and management of containerized applications. It abstracts the underlying infrastructure, allowing developers to focus on application development without worrying about the complexities of the environment.
+
 Key features
+
 •	Load Balancing.  Distributes traffic across containers.
+
 •	Scaling. Automatically increases or decreases containers based on demand.
+
 •	Self-healing. Restarts failed containers automatically.
+
 •	Rolling updates. Deploys updates with zero downtime.
 
