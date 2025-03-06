@@ -127,7 +127,7 @@ Steps i used to produce the one in this assignment
      </html>
      
 	I created a dockerfile to serve the HTML file using Nginx.
-# i Used an official Nginx image as the base image
+# i used  an official Nginx image as the base image
      FROM nginx:alpine
 # i Copied the static HTML file to the Nginx web root directory
      COPY index.html /usr/share/nginx/html/index.html
@@ -140,33 +140,33 @@ Steps i used to produce the one in this assignment
 
 	I build the docker image:
 
-          bash
+       
           docker build -t static-html-server.
           
 	I ran the container:
 
-          bash
+       
           docker run -p 8080:80 static-html-server
           
 •	Pushing the docker image to Google container registry.
 
-	I tagged and pushed the image:
+	I tagged and pushed the image using:
 
-          bash
+          
           docker tag static-html-server gcr.io/<PROJECT_ID>/static-html-server:latest
           docker push gcr.io/<PROJECT_ID>/static-html-server:latest
           
 •	Deploying the application on Kubernetes.
 
-	I created a Goggle Kubernetes engine cluster:
+	I created a Goggle Kubernetes engine cluster using:
 
-          bash
+          
           gcloud container clusters create static-html-cluster --num-nodes=3
           
           
-	I deployed the application:
+	I deployed the application using:
 
-          bash
+          
           kubectl create deployment static-html-app --image=gcr.io/<PROJECT_ID>/static-html-server:latest
           kubectl expose deployment static-html-app --type=LoadBalancer --port=80 --target-port=80
           
